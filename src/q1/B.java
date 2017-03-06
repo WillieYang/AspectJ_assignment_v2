@@ -17,7 +17,10 @@ public class B {
 		return a + a;
 	}
 	
-	public void tell(){
+	public int tell(int a){
+		
 		System.out.println("shengyang");
+		return baz(4);
+		
 	}
 }

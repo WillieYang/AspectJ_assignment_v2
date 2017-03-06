@@ -1,4 +1,4 @@
-package q1.sy3g16;
+package q2.sy3g16;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 
 import org.aspectj.lang.Signature;
 
-public aspect Aspect_part_one {
+public aspect Aspect_part_two {
 
 	public String node;
 	public String current_node;
@@ -15,9 +15,9 @@ public aspect Aspect_part_one {
 	public String nodefile = "./node.csv";
 	public String edgefile = "./edge.csv";
 	
-	pointcut callnodes(): call(public int q1..*(int));
-	pointcut calledge(): call(public int q1..*(int))
-						&& withincode(public int q1..*(int));
+	pointcut callnodes(): call(public int q2..*(int));
+	pointcut calledge(): call(public int q2..*(int))
+						&& withincode(public int q2..*(int));
 	
 	before() : callnodes(){
 		
@@ -44,7 +44,7 @@ public aspect Aspect_part_one {
 			}
 	}
 	
-	after(): calledge(){
+	after() returning(Object o): calledge(){
 		
 		Signature sig_current = thisJoinPointStaticPart.getSignature();
 		Signature sig_enclosing = thisEnclosingJoinPointStaticPart.getSignature();
@@ -55,6 +55,8 @@ public aspect Aspect_part_one {
 		System.out.println("After--------");
 		
 		System.out.println("Edge:"+ enclosing_node + "-->" + current_node);
+		
+		System.out.println("Return normally:" + o);
 		
 		try(FileWriter fw_edge = new FileWriter(edgefile, true);
 				BufferedWriter bw_edge = new BufferedWriter(fw_edge);
