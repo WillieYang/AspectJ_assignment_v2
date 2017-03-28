@@ -1,6 +1,6 @@
 package test;
 
-import q3.B;
+import q1.B;
 
 public class Test {
 

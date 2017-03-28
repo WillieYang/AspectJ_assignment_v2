@@ -36,33 +36,50 @@ public aspect Aspect_part_three_1 {
 			try {
 				Scanner scanner;
 				scanner = new Scanner(f);
-				if(scanner.hasNextLine()){
 					//scanner.useDelimiter(",");
 					//while(scanner.hasNext()){}
-					String[] list_value;
+				String value_line = scanner.nextLine();
+				String input_fre = scanner.nextLine();
+				String return_fre = scanner.nextLine();
+				String[] list_value;
+				String[] list_input_fr;
+				String[] list_return_fr;
 					
-						//System.out.println(scanner.nextLine());
-					String value_line = scanner.nextLine();
-					list_value = value_line.split(",");
-					System.out.println(list_value);
-					List<String> lst = new ArrayList<String>(Arrays.asList(list_value));
-					System.out.println(lst);
-					System.out.println(list_value[0] + list_value[1]);
+				list_value = value_line.split(",");
+				list_input_fr = input_fre.split(",");
+				list_return_fr = return_fre.split(",");
+				
+				List<String> lst_value = new ArrayList<String>(Arrays.asList(list_value));
+				List<String> lst_input_fr = new ArrayList<String>(Arrays.asList(list_input_fr));
+				List<String> lst_return_fr = new ArrayList<String>(Arrays.asList(list_return_fr));
+				
+				System.out.println(lst_value);
+				System.out.println(list_value[0] + list_value[1]);
 					
-					for(int i=0; i<lst.size();i++){
-						System.out.println(lst.get(i));
-						if(Integer.toString(input_value))
+				for(int i=0; i<lst_value.size();i++){
+					System.out.println(lst_value.get(i));
+					if(Integer.toString(input_value).equals(lst_value.get(i))){
+						System.out.println("the value is existed");
+						System.out.println(lst_input_fr.get(i));
+						int it_ve = Integer.parseInt(lst_input_fr.get(i));
+						System.out.println("integer:" + ++it_ve);
+						Integer.toString(it_ve);
+						System.out.println("string:" + it_ve);
+						//lst_input_fr.set(i, it_ve);
+						
+						//lst_input_fr.get(i) = it_ve;
+						System.out.println(lst_input_fr.get(i));
 					}
+				}
 					
 					
-						System.out.println("Line------");
-				}
-				if(scanner.hasNextLine()){
-					System.out.println(scanner.nextLine());
-				}
-				if(scanner.hasNextLine()){
-					System.out.println(scanner.nextLine());
-				}
+					System.out.println("Line------");
+	
+				
+					System.out.println(input_fre);
+				
+					System.out.println(return_fre);
+				
 				scanner.close();
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
